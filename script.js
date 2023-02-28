@@ -6,19 +6,24 @@ document.querySelector('#submitSize').addEventListener('click', (event) => {
     createDiv(gridSize);
 });
 
-function createDiv(number) {
-    console.log(number);
-
-    const container = document.querySelector('.container-grid');
-
-
-    for (let i = 1; i <= number; i++) {
+function createDiv(userInput) {
+    const containerGrid = document.querySelector('.containerGrid');
+    containerGrid.innerHTML= "";
+    for (let i = 1; i <= userInput; i++) {
         console.log("Je suis dans la boucle:", i);
-        const content = document.createElement('div');
-        content.classList.add('content-div');
-        content.setAttribute('id', `div-${i}`);
-        container.appendChild(content);
+        const divVert = document.createElement('div');
+        divVert.classList.add('divVert');
+        divVert.setAttribute('id', `divVert-${i}`);
+        //divVert.innerHTML = '<div class="divHoriz"></div>'.repeat(userInput);
+        containerGrid.appendChild(divVert);
+        for (let j = 1; j <= userInput; j++) {
+            const divHoriz = document.createElement('div');
+            divHoriz.classList.add('divHoriz');
+            divHoriz.setAttribute('id', `divHoriz-${j}`);
+            divVert.appendChild(divHoriz);
+        }
     }       
 }
+//TODO effacer l'ancienne grille si autre saisie
 
 

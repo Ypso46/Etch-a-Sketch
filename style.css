@@ -1,0 +1,9 @@
+.divVert {
+    display: grid;
+   
+    grid-template-columns: repeat(20, 1fr);
+}
+div.divHoriz {
+    aspect-ratio: 1/1;
+    border: 3px solid blue;
+}
