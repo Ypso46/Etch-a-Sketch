@@ -1,9 +1,13 @@
 .divVert {
     display: grid;
-   
-    grid-template-columns: repeat(20, 1fr);
 }
+
 div.divHoriz {
     aspect-ratio: 1/1;
-    border: 3px solid blue;
+    border: 2px solid blue;
+}
+
+.containerGrid {
+    width: 600px;
+    height: auto;
 }
