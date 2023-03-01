@@ -1,4 +1,7 @@
 var isDown = false;
+var draw = true;
+var eraser = false;
+var color = "red";
 
 document.querySelector('#gridSizeInput').addEventListener('change', async (event) => {
     event.preventDefault();
@@ -27,11 +30,24 @@ async function createDiv(userInput) {
 }
 
 function mouseOver(userInput) {
+    document.getElementById('draw').addEventListener('click', () => {
+        draw = true;
+    });
+    
+    document.getElementById('eraser').addEventListener('click', () => {
+        eraser = true;
+        color = "white";
+    });
+
     for (let i = 1; i <= userInput; i++) {
         for (let j = 1; j <= userInput; j++) {
             document.querySelector(`#divSquare-${i}-${j}`).addEventListener('mouseover', () => {
-                if (isDown) {
-                    document.querySelector(`#divSquare-${i}-${j}`).style.backgroundColor = 'red';                    
+                if (draw && isDown) {
+                    document.querySelector(`#divSquare-${i}-${j}`).style.backgroundColor = color;                    
+                } else if (eraser && isDown) {
+                    document.querySelector(`#divSquare-${i}-${j}`).style.backgroundColor = color;                    
+                } else {
+                    isDown = false;
                 }
             }); 
         }
@@ -39,12 +55,12 @@ function mouseOver(userInput) {
 }
 
 document.getElementById('containerTest').addEventListener('mousedown', (event) => {
-    console.log("mousedown");
+    console.log("Mouse is down");
     isDown = true;
 }); 
 
 document.getElementById('containerTest').addEventListener('mouseup', (event) => {
-    console.log("mouseup");
+    console.log("Mouse is up");
     isDown = false;
 }); 
 

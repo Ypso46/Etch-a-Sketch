@@ -9,11 +9,21 @@
     <title>Document</title>
 </head>
 <body>
-    <form name="frm">
-        <label for="gridSizeInput">Enter the size you want your grid to be:</label>
-        <input type="number" name="gridSizeInput" id="gridSizeInput">
-    </form>
-    <div class="containerGrid" id="containerTest">
+    <div class="global">
+        <div class="header">
+            <div class="userInput">
+                <form name="frm">
+                    <label for="gridSizeInput">Enter the size you want your grid to be:</label>
+                    <input type="number" name="gridSizeInput" id="gridSizeInput">
+                </form>
+            </div>
+            <button id="draw">Draw</button>
+            <button>Color Picker</button>
+            <button id="eraser">Eraser</button>
+        </div>
+            <div class="containerGrid" id="containerTest">
+            </div>
     </div>
+    
 </body>
 </html>
