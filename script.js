@@ -1,11 +1,12 @@
-document.querySelector('#gridSizeInput').addEventListener('change', (event) => {
+document.querySelector('#gridSizeInput').addEventListener('change', async (event) => {
     event.preventDefault();
     const gridSizeInput = document.querySelector('#gridSizeInput');
     let gridSize = gridSizeInput.value;
-    createDiv(gridSize);
+    await createDiv(gridSize);
+    mouseOver(gridSize);
 });
 
-function createDiv(userInput) {
+async function createDiv(userInput) {
     const containerGrid = document.querySelector('.containerGrid');
     containerGrid.innerHTML= "";
     for (let i = 1; i <= userInput; i++) {
@@ -20,7 +21,15 @@ function createDiv(userInput) {
             divHoriz.setAttribute('id', `divSquare-${i}-${j}`);
             divVert.appendChild(divHoriz);
         }
-    }       
+    }
 }
 
-
+function mouseOver(userInput) {
+    for (let i = 1; i <= userInput; i++) {
+        for (let j = 1; j <= userInput; j++) {
+            document.querySelector(`#divSquare-${i}-${j}`).addEventListener('click', () => {
+                alert(`#divSquare-${i}-${j}`);
+            });
+        }
+    }
+}
