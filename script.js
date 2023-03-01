@@ -32,11 +32,14 @@ async function createDiv(userInput) {
 function mouseOver(userInput) {
     document.getElementById('draw').addEventListener('click', () => {
         draw = true;
+        eraser = false;
+        color = "red";
     });
     
     document.getElementById('eraser').addEventListener('click', () => {
         eraser = true;
         color = "white";
+        draw = false;
     });
 
     for (let i = 1; i <= userInput; i++) {
@@ -52,6 +55,13 @@ function mouseOver(userInput) {
             }); 
         }
     }
+}
+
+//TODO write a function to reset the drawing
+const clearBtn = document.getElementById('clearBtn');
+clearBtn.onclick = () => clearGrid()
+function clearGrid() {
+    containerGrid.innerHTML = '';
 }
 
 document.getElementById('containerTest').addEventListener('mousedown', (event) => {
