@@ -1,3 +1,5 @@
+var isDown = false;
+
 document.querySelector('#gridSizeInput').addEventListener('change', async (event) => {
     event.preventDefault();
     const gridSizeInput = document.querySelector('#gridSizeInput');
@@ -27,9 +29,22 @@ async function createDiv(userInput) {
 function mouseOver(userInput) {
     for (let i = 1; i <= userInput; i++) {
         for (let j = 1; j <= userInput; j++) {
-            document.querySelector(`#divSquare-${i}-${j}`).addEventListener('click', () => {
-                alert(`#divSquare-${i}-${j}`);
-            });
+            document.querySelector(`#divSquare-${i}-${j}`).addEventListener('mouseover', () => {
+                if (isDown) {
+                    document.querySelector(`#divSquare-${i}-${j}`).style.backgroundColor = 'red';                    
+                }
+            }); 
         }
     }
 }
+
+document.getElementById('containerTest').addEventListener('mousedown', (event) => {
+    console.log("mousedown");
+    isDown = true;
+}); 
+
+document.getElementById('containerTest').addEventListener('mouseup', (event) => {
+    console.log("mouseup");
+    isDown = false;
+}); 
+
