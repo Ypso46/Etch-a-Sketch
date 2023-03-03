@@ -42,26 +42,32 @@ function mouseOver(userInput) {
         draw = false;
     });
 
+    document.getElementById('clearBtn').addEventListener('click', () => {
+    document.querySelectorAll(".divHoriz").forEach((e) => (e.style.backgroundColor = "white"))
+    });    
+   
+//TOTO refactor with JQuery
     for (let i = 1; i <= userInput; i++) {
         for (let j = 1; j <= userInput; j++) {
-            document.querySelector(`#divSquare-${i}-${j}`).addEventListener('mouseover', () => {
-                if (draw && isDown) {
+            // document.querySelector(`#divSquare-${i}-${j}`).addEventListener('mouseover', () => {
+            //     if (draw && isDown) {
+            //         document.querySelector(`#divSquare-${i}-${j}`).style.backgroundColor = color;                    
+            //     } else if (eraser && isDown) {
+            //         document.querySelector(`#divSquare-${i}-${j}`).style.backgroundColor = color;                    
+            //     } else {
+            //         isDown = false;
+            //     }
+            // });
+            $(`#divSquare-${i}-${j}`).on('click mouseover', () => {
+                if (draw) {
                     document.querySelector(`#divSquare-${i}-${j}`).style.backgroundColor = color;                    
-                } else if (eraser && isDown) {
-                    document.querySelector(`#divSquare-${i}-${j}`).style.backgroundColor = color;                    
-                } else {
-                    isDown = false;
                 }
-            }); 
+                if (eraser) {
+                    document.querySelector(`#divSquare-${i}-${j}`).style.backgroundColor = color;                    
+                }
+            });
         }
     }
-}
-
-//TODO write a function to reset the drawing
-const clearBtn = document.getElementById('clearBtn');
-clearBtn.onclick = () => clearGrid()
-function clearGrid() {
-    containerGrid.innerHTML = '';
 }
 
 document.getElementById('containerTest').addEventListener('mousedown', (event) => {
@@ -73,4 +79,3 @@ document.getElementById('containerTest').addEventListener('mouseup', (event) => 
     console.log("Mouse is up");
     isDown = false;
 }); 
-
